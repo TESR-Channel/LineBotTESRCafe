@@ -84,7 +84,7 @@ def handle_message(event):
     elif text == "contact":
     	if isinstance(event.source, SourceUser):
             profile = line_bot_api.get_profile(event.source.user_id)
-            text_contact =  "Website: https://tesracademy.wordpress.com/\n"
+            text_contact =  "Website: https://tesracademy.wordpress.com/"
 ##            text_contact += "Facebook : http://www.facebook.com/ThaiEmbedded\n"
 ##            text_contact += "Youtube Channel : http://www.youtube.com/tesrchannel\n"
 ##            text_contact += "Email : ceo.anoney.potter@gmail.com\n"
