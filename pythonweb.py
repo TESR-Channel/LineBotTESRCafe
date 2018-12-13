@@ -113,6 +113,19 @@ def handle_message(event):
             }
 
             res = requests.post(url, headers=headers , json = msg)
+
+            msg = {
+                "to": profile.user_id ,
+                "messages":[
+                    {
+                        "type":"image",
+                        "originalContentUrl":"https://scontent.fbkk7-3.fna.fbcdn.net/v/t1.0-9/47689252_1076094299240276_3886605963024662528_n.jpg?_nc_cat=100&_nc_ht=scontent.fbkk7-3.fna&oh=19e4c45d18a293c2e25e623333db5797&oe=5C9826F9",
+                        "previewImageUrl":"https://scontent.fbkk7-3.fna.fbcdn.net/v/t1.0-9/47689252_1076094299240276_3886605963024662528_n.jpg?_nc_cat=100&_nc_ht=scontent.fbkk7-3.fna&oh=19e4c45d18a293c2e25e623333db5797&oe=5C9826F9"
+                    }
+                ]
+            }
+
+            res = requests.post(url, headers=headers , json = msg)
             
         else:
             line_bot_api.reply_message(
