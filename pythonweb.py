@@ -53,41 +53,41 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-	#global url , KEY , SECRET
+#global url , KEY , SECRET
 	text = (str(event.message.text)).lower()
 	if "profile" in text:
-        if isinstance(event.source, SourceUser):
-            profile = line_bot_api.get_profile(event.source.user_id)
-            line_bot_api.reply_message(
-                event.reply_token, [
-                    TextSendMessage(text='Display name: ' + profile.display_name),
-                    TextSendMessage(text='Status message: ' + profile.status_message)
-                ]
-            )
-        else:
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text="Bot can't use profile API without user ID"))
-    elif "on" in text:
-    	line_bot_api.reply_message(event.reply_token,TextSendMessage(text='ON LED'))
+		if isinstance(event.source, SourceUser):
+		    profile = line_bot_api.get_profile(event.source.user_id)
+		    line_bot_api.reply_message(
+			event.reply_token, [
+			    TextSendMessage(text='Display name: ' + profile.display_name),
+			    TextSendMessage(text='Status message: ' + profile.status_message)
+			]
+		    )
+		else:
+		    line_bot_api.reply_message(
+			event.reply_token,
+			TextSendMessage(text="Bot can't use profile API without user ID"))
+	elif "on" in text:
+		line_bot_api.reply_message(event.reply_token,TextSendMessage(text='ON LED'))
 
-    	#REST API NETPIE ON LED
-    	r = requests.put(url, data = {'':'ON'} , auth=(str(KEY),str(SECRET)))
+		#REST API NETPIE ON LED
+		r = requests.put(url, data = {'':'ON'} , auth=(str(KEY),str(SECRET)))
 
-    elif "temp?" in text:
-    	#REST API NETPIE read sensor value
-    	r = requests.put(url, data = {'':'temp?'} , auth=(str(KEY),str(SECRET)))
-    	
-    	http = urllib3.PoolManager()
-    	response = http.request('GET',urlRESTAPI) # read data from publish retain
+	elif "temp?" in text:
+		#REST API NETPIE read sensor value
+		r = requests.put(url, data = {'':'temp?'} , auth=(str(KEY),str(SECRET)))
 
-    	line_bot_api.reply_message(event.reply_token,TextSendMessage(text=((str(response.data)).split('"')[7]) + " °C"))
-        
-        #r = requests.get(urlRESTAPI)
-        #https://api.netpie.io/topic/LineBotRpi/LED_Control?auth=Jk0ej35pLC7TVr1:edWzwTUkzizhlyRamWWq6nF9I
-        
-    else:
-    	line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
+		http = urllib3.PoolManager()
+		response = http.request('GET',urlRESTAPI) # read data from publish retain
+
+		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=((str(response.data)).split('"')[7]) + " °C"))
+
+		#r = requests.get(urlRESTAPI)
+		#https://api.netpie.io/topic/LineBotRpi/LED_Control?auth=Jk0ej35pLC7TVr1:edWzwTUkzizhlyRamWWq6nF9I
+
+	else:
+		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
 
 
 if __name__ == "__main__":
