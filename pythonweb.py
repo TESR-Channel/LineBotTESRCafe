@@ -55,7 +55,7 @@ def callback():
 def handle_message(event):
 	#global url , KEY , SECRET
 	text = (str(event.message.text)).lower()
-	if text == "profile":
+	if text in "profile":
         if isinstance(event.source, SourceUser):
             profile = line_bot_api.get_profile(event.source.user_id)
             line_bot_api.reply_message(
