@@ -95,6 +95,11 @@ def handle_message(event):
                     TextSendMessage(text=""+text_contact)
                 ]
             )
+
+            url = "https://api.line.me/v2/bot/message/push"
+            token = "PpNhy1loFsQWx2Iaw5imgbwlNGWibIHuReRgrDxZgLZVyBq1AlQZgaLq5BxAuVFYPVOeOKUeNDvRzKouPDRAzEJ6ER8Hj9lZYPCtdAnRFVWFYiJMWc5wxnAy2lAahX/teOvGh8rGaLj0s8uxAJzj/QdB04t89/1O/w1cDnyilFU=" # your Line Notify token
+            headers = {'Authorization':'Bearer '+token}
+            LineUserID = profile.user_id
             
             msg = {
                 "to": profile.user_id ,
