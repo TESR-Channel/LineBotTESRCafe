@@ -80,11 +80,6 @@ def handle_message(event):
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text="Bot can't use profile API without user ID"))
-    elif "on" in text:
-    	line_bot_api.reply_message(event.reply_token,TextSendMessage(text='ON LED'))
-
-    	#REST API NETPIE ON LED
-    	r = requests.put(url, data = {'':'ON'} , auth=(str(KEY),str(SECRET)))
 
     elif "temp?" in text:
     	#REST API NETPIE read sensor value
