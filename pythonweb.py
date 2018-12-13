@@ -84,13 +84,17 @@ def handle_message(event):
     elif text == "contact":
     	if isinstance(event.source, SourceUser):
             profile = line_bot_api.get_profile(event.source.user_id)
-            text_contact =  "Website: https://tesracademy.wordpress.com/"
+            text_contact =  "Website: https://tesracademy.wordpress.com/\n"
 ##            text_contact += "Facebook : http://www.facebook.com/ThaiEmbedded\n"
 ##            text_contact += "Youtube Channel : http://www.youtube.com/tesrchannel\n"
 ##            text_contact += "Email : ceo.anoney.potter@gmail.com\n"
 ##            text_contact += "line id : @ion1900z\n"
 ##            text_contact += "Tel. 090-465-6519"
-            line_bot_api.reply_message(event.reply_token, [ TextSendMessage(text=text_contact) ] )
+            line_bot_api.reply_message(
+                event.reply_token, [
+                    TextSendMessage(text=""+text_contact)
+                ]
+            )
         else:
             line_bot_api.reply_message(
                 event.reply_token,
