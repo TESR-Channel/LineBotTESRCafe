@@ -84,7 +84,7 @@ def handle_message(event):
     elif text == "contact":
         if isinstance(event.source, SourceUser):
             profile = line_bot_api.get_profile(event.source.user_id)
-            text_contact =  "Web: https://tesracademy.wordpress.com/\n"
+            text_contact =  "Website: https://tesracademy.wordpress.com/\n"
             text_contact += "Facebook : http://www.facebook.com/ThaiEmbedded\n"
             text_contact += "Youtube : http://www.youtube.com/tesrchannel\n"
             text_contact += "Email : ceo.anoney.potter@gmail.com\n"
@@ -95,25 +95,39 @@ def handle_message(event):
                     TextSendMessage(text=""+text_contact)
                 ]
             )
+            
+            msg = {
+                "to": profile.user_id ,
+                "messages":[
+                    {
+                        "type":"image",
+                        "originalContentUrl":"https://scontent.fbkk7-3.fna.fbcdn.net/v/t1.0-9/48237135_1076094315906941_7505595876794957824_o.jpg?_nc_cat=103&_nc_ht=scontent.fbkk7-3.fna&oh=271db4c48b3e65eda662bfc9e99f9d08&oe=5CA47C98",
+                        "previewImageUrl":"https://scontent.fbkk7-3.fna.fbcdn.net/v/t1.0-9/48237135_1076094315906941_7505595876794957824_o.jpg?_nc_cat=103&_nc_ht=scontent.fbkk7-3.fna&oh=271db4c48b3e65eda662bfc9e99f9d08&oe=5CA47C98"
+                    }
+                ]
+            }
+
+            res = requests.post(url, headers=headers , json = msg)
+            
         else:
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text="Bot can't use profile API without user ID"))
 
     elif "temp?" in text:
-    	#REST API NETPIE read sensor value
-    	r = requests.put(url, data = {'':'temp?'} , auth=(str(KEY),str(SECRET)))
-    	
-    	http = urllib3.PoolManager()
-    	response = http.request('GET',urlRESTAPI) # read data from publish retain
+        #REST API NETPIE read sensor value
+        r = requests.put(url, data = {'':'temp?'} , auth=(str(KEY),str(SECRET)))
+        
+        http = urllib3.PoolManager()
+        response = http.request('GET',urlRESTAPI) # read data from publish retain
 
-    	line_bot_api.reply_message(event.reply_token,TextSendMessage(text=((str(response.data)).split('"')[7]) + " °C"))
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=((str(response.data)).split('"')[7]) + " °C"))
         
         #r = requests.get(urlRESTAPI)
         #https://api.netpie.io/topic/LineBotRpi/LED_Control?auth=Jk0ej35pLC7TVr1:edWzwTUkzizhlyRamWWq6nF9I
         
     else:
-    	line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
 
 @handler.add(BeaconEvent)
 def handle_beacon(event):
