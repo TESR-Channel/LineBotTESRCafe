@@ -72,7 +72,8 @@ def handle_message(event):
             line_bot_api.reply_message(
                 event.reply_token, [
                     TextSendMessage(text='Display name: ' + profile.display_name),
-                    TextSendMessage(text='Status message: ' + profile.status_message)
+                    TextSendMessage(text='Status message: ' + profile.status_message),
+                    TextSendMessage(text='User ID: ' + event.source.user_id)
                 ]
             )
         else:
@@ -99,6 +100,14 @@ def handle_message(event):
         
     else:
     	line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
+
+@handler.add(BeaconEvent)
+def handle_beacon(event):
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(
+            text='Got beacon event. hwid={}, device_message(hex string)={}'.format(
+                event.beacon.hwid, event.beacon.dm)))
 
 
 if __name__ == "__main__":
