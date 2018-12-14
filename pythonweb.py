@@ -82,14 +82,18 @@ def handle_message(event):
                 TextSendMessage(text="Bot can't use profile API without user ID"))
             
     elif text == "menu":
+        Menu_url = "http://example.com"
         image_carousel_template = ImageCarouselTemplate(columns=[
-            ImageCarouselColumn(image_url="https://scontent.fbkk6-1.fna.fbcdn.net/v/t1.0-9/39454660_1001737283342645_6691743344214671360_n.jpg?_nc_cat=100&_nc_ht=scontent.fbkk6-1.fna&oh=8155c7522c7b274d7afcf65d5d07dfc2&oe=5CA6BAA1"),
-            ImageCarouselColumn(image_url="https://scontent.fbkk6-2.fna.fbcdn.net/v/t1.0-9/39442752_1001738930009147_2170020964899749888_n.jpg?_nc_cat=103&_nc_ht=scontent.fbkk6-2.fna&oh=ec390fe97902d919704e68cc36534165&oe=5CAFD3A8"),
-            ImageCarouselColumn(image_url="https://scontent.fbkk6-1.fna.fbcdn.net/v/t1.0-9/39221449_1001737313342642_6907313284718788608_n.jpg?_nc_cat=108&_nc_ht=scontent.fbkk6-1.fna&oh=63d6884a0af21043195873c19de8a1fc&oe=5CA5B7BB")
+            ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
+                                action=URIAction(uri=Menu_url,
+                                                 label='label')),
+            ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
+                                action=URIAction(uri='http://example.com',
+                                                 label='label')),
+            ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
+                                action=URIAction(uri='http://example.com',
+                                                 label='label'))
         ])
-        template_message = TemplateSendMessage(
-            alt_text='ImageCarousel alt text', template=image_carousel_template)
-        line_bot_api.reply_message(event.reply_token, template_message)
 
     elif text == 'flex':
         bubble = BubbleContainer(
@@ -105,7 +109,7 @@ def handle_message(event):
                 layout='vertical',
                 contents=[
                     # title
-                    TextComponent(text='TESR', weight='bold', size='xl'),
+                    TextComponent(text="TESR", weight='bold', size='xl'),
                     # review
                     BoxComponent(
                         layout='baseline',
@@ -185,11 +189,11 @@ def handle_message(event):
                 ]
             ),
         )
-##        message = FlexSendMessage(alt_text="hello", contents=bubble)
-##        line_bot_api.reply_message(
-##            event.reply_token,
-##            message
-##        )
+        message = FlexSendMessage(alt_text="hello", contents=bubble)
+        line_bot_api.reply_message(
+            event.reply_token,
+            message
+        )
         
     elif text == "contact":
         if isinstance(event.source, SourceUser):
