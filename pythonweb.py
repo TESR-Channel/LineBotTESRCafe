@@ -98,7 +98,7 @@ def handle_message(event):
             alt_text="Thank you.", template=image_carousel_template)
         line_bot_api.reply_message(event.reply_token, template_message)
 
-    elif text == 'contact':
+    elif text == "contact":
         bubble = BubbleContainer(
             direction='ltr',
             hero=ImageComponent(
@@ -212,21 +212,9 @@ def handle_message(event):
             message
         )
         
-    elif text == "namecard":
+    elif text == "name card":
         if isinstance(event.source, SourceUser):
             profile = line_bot_api.get_profile(event.source.user_id)
-            text_contact =  "Website: https://tesracademy.wordpress.com/\n"
-            text_contact += "Facebook : http://www.facebook.com/ThaiEmbedded\n"
-            text_contact += "Youtube : http://www.youtube.com/tesrchannel\n"
-            text_contact += "Email : ceo.anoney.potter@gmail.com\n"
-            text_contact += "line@ : @ion1900z\n"
-            text_contact += "Tel. 090-465-6519"
-            line_bot_api.reply_message(
-                event.reply_token, [
-                    TextSendMessage(text=""+text_contact)
-                ]
-            )
-
             url = "https://api.line.me/v2/bot/message/push"
             token = "PpNhy1loFsQWx2Iaw5imgbwlNGWibIHuReRgrDxZgLZVyBq1AlQZgaLq5BxAuVFYPVOeOKUeNDvRzKouPDRAzEJ6ER8Hj9lZYPCtdAnRFVWFYiJMWc5wxnAy2lAahX/teOvGh8rGaLj0s8uxAJzj/QdB04t89/1O/w1cDnyilFU=" # your Line Notify token
             headers = {'Authorization':'Bearer '+token}
@@ -302,6 +290,21 @@ def handle_sticker_message(event):
 
 @handler.add(BeaconEvent)
 def handle_beacon(event):
+    Menu_url = "http://example.com" # Menu Web Url
+    image_carousel_template = ImageCarouselTemplate(columns=[
+        ImageCarouselColumn(image_url='https://scontent.fbkk6-1.fna.fbcdn.net/v/t1.0-9/39454660_1001737283342645_6691743344214671360_n.jpg?_nc_cat=100&_nc_ht=scontent.fbkk6-1.fna&oh=8155c7522c7b274d7afcf65d5d07dfc2&oe=5CA6BAA1',
+                            action=URIAction(uri=Menu_url,
+                                             label='500 Baht')),
+        ImageCarouselColumn(image_url='https://scontent.fbkk6-2.fna.fbcdn.net/v/t1.0-9/39442752_1001738930009147_2170020964899749888_n.jpg?_nc_cat=103&_nc_ht=scontent.fbkk6-2.fna&oh=ec390fe97902d919704e68cc36534165&oe=5CAFD3A8',
+                            action=URIAction(uri=Menu_url,
+                                             label='80 Baht')),
+        ImageCarouselColumn(image_url='https://scontent.fbkk6-1.fna.fbcdn.net/v/t1.0-9/39221449_1001737313342642_6907313284718788608_n.jpg?_nc_cat=108&_nc_ht=scontent.fbkk6-1.fna&oh=63d6884a0af21043195873c19de8a1fc&oe=5CA5B7BB',
+                            action=URIAction(uri=Menu_url,
+                                             label='200 Baht'))
+    ])
+    template_message = TemplateSendMessage(
+        alt_text="Thank you.", template=image_carousel_template)
+    line_bot_api.reply_message(event.reply_token, template_message)
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(
