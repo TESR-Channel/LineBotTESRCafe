@@ -98,7 +98,7 @@ def handle_message(event):
             alt_text="Thank you.", template=image_carousel_template)
         line_bot_api.reply_message(event.reply_token, template_message)
 
-    elif text == 'flex':
+    elif text == 'contact':
         bubble = BubbleContainer(
             direction='ltr',
             hero=ImageComponent(
@@ -167,14 +167,6 @@ def handle_message(event):
                 contents=[
                     # separator
                     SeparatorComponent(),
-                    # callAction
-                    ButtonComponent(
-                        style='link',
-                        height='sm',
-                        action=URIAction(label='Call', uri='tel:000000'),
-                    ),
-                    # separator
-                    SeparatorComponent(),
                     # websiteAction
                     ButtonComponent(
                         style='link',
@@ -194,7 +186,23 @@ def handle_message(event):
                         style='link',
                         height='sm',
                         action=URIAction(label='Youtube', uri="http://www.youtube.com/tesrchannel")
+                    ),
+                    # separator
+                    SeparatorComponent(),
+                    ButtonComponent(
+                        style='link',
+                        height='sm',
+                        action=URIAction(label='Line@', uri="https://line.me/R/ti/p/%40ion1900z")
+                    ),
+                    # separator
+                    SeparatorComponent(),
+                    # callAction
+                    ButtonComponent(
+                        style='link',
+                        height='sm',
+                        action=URIAction(label='Call', uri='tel:000000'),
                     )
+                    
                 ]
             ),
         )
@@ -204,7 +212,7 @@ def handle_message(event):
             message
         )
         
-    elif text == "contact":
+    elif text == "namecard":
         if isinstance(event.source, SourceUser):
             profile = line_bot_api.get_profile(event.source.user_id)
             text_contact =  "Website: https://tesracademy.wordpress.com/\n"
