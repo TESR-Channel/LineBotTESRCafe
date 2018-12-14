@@ -112,21 +112,7 @@ def handle_message(event):
                 layout='vertical',
                 contents=[
                     # title
-                    TextComponent(text="Thai Embedded System and Robotics", weight='bold', size='xl', margin='md'),
-                    # review
-##                    BoxComponent(
-##                        layout='baseline',
-##                        margin='md',
-##                        contents=[
-##                            IconComponent(size='sm', url='https://example.com/gold_star.png'),
-##                            IconComponent(size='sm', url='https://example.com/grey_star.png'),
-##                            IconComponent(size='sm', url='https://example.com/gold_star.png'),
-##                            IconComponent(size='sm', url='https://example.com/gold_star.png'),
-##                            IconComponent(size='sm', url='https://example.com/grey_star.png'),
-##                            TextComponent(text='4.0', size='sm', color='#999999', margin='md',
-##                                          flex=0)
-##                        ]
-##                    ),
+                    TextComponent(text="Thai Embedded System and Robotics", weight='bold', size='full', margin='md'),
                     # info
                     BoxComponent(
                         layout='vertical',
