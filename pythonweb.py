@@ -84,15 +84,15 @@ def handle_message(event):
     elif text == "menu":
         Menu_url = "http://example.com"
         image_carousel_template = ImageCarouselTemplate(columns=[
-            ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
+            ImageCarouselColumn(image_url='https://scontent.fbkk6-1.fna.fbcdn.net/v/t1.0-9/39454660_1001737283342645_6691743344214671360_n.jpg?_nc_cat=100&_nc_ht=scontent.fbkk6-1.fna&oh=8155c7522c7b274d7afcf65d5d07dfc2&oe=5CA6BAA1',
                                 action=URIAction(uri=Menu_url,
-                                                 label='label')),
-            ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
-                                action=URIAction(uri='http://example.com',
-                                                 label='label')),
-            ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
-                                action=URIAction(uri='http://example.com',
-                                                 label='label'))
+                                                 label='500 Baht')),
+            ImageCarouselColumn(image_url='https://scontent.fbkk6-2.fna.fbcdn.net/v/t1.0-9/39442752_1001738930009147_2170020964899749888_n.jpg?_nc_cat=103&_nc_ht=scontent.fbkk6-2.fna&oh=ec390fe97902d919704e68cc36534165&oe=5CAFD3A8',
+                                action=URIAction(uri=Menu_url,
+                                                 label='80 Baht')),
+            ImageCarouselColumn(image_url='https://scontent.fbkk6-1.fna.fbcdn.net/v/t1.0-9/39221449_1001737313342642_6907313284718788608_n.jpg?_nc_cat=108&_nc_ht=scontent.fbkk6-1.fna&oh=63d6884a0af21043195873c19de8a1fc&oe=5CA5B7BB',
+                                action=URIAction(uri=Menu_url,
+                                                 label='200 Baht'))
         ])
         template_message = TemplateSendMessage(
             alt_text='ImageCarousel alt text', template=image_carousel_template)
@@ -102,7 +102,7 @@ def handle_message(event):
         bubble = BubbleContainer(
             direction='ltr',
             hero=ImageComponent(
-                url="https://scontent.fbkk6-1.fna.fbcdn.net/v/t1.0-9/41213384_1018615684988138_7694866487005151232_n.png?_nc_cat=105&_nc_ht=scontent.fbkk6-1.fna&oh=ad538dcfcb4d158a95eb64f88cfd6f40&oe=5CB200B2",
+                url="https://scontent.fbkk6-2.fna.fbcdn.net/v/t1.0-9/39308160_1001769490006091_9184433768859959296_o.jpg?_nc_cat=101&_nc_ht=scontent.fbkk6-2.fna&oh=a9b3a35f7a3a7a48bb75fbadeb8c5896&oe=5CAD82C2",
                 size='full',
                 aspect_ratio='20:13',
                 aspect_mode='cover',
