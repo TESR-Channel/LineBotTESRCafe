@@ -82,7 +82,7 @@ def handle_message(event):
                 TextSendMessage(text="Bot can't use profile API without user ID"))
             
     elif text == "menu":
-        Menu_url = "http://example.com"
+        Menu_url = "http://example.com" # Menu Web Url
         image_carousel_template = ImageCarouselTemplate(columns=[
             ImageCarouselColumn(image_url='https://scontent.fbkk6-1.fna.fbcdn.net/v/t1.0-9/39454660_1001737283342645_6691743344214671360_n.jpg?_nc_cat=100&_nc_ht=scontent.fbkk6-1.fna&oh=8155c7522c7b274d7afcf65d5d07dfc2&oe=5CA6BAA1',
                                 action=URIAction(uri=Menu_url,
@@ -95,7 +95,7 @@ def handle_message(event):
                                                  label='200 Baht'))
         ])
         template_message = TemplateSendMessage(
-            alt_text='ImageCarousel alt text', template=image_carousel_template)
+            alt_text="Thank you.", template=image_carousel_template)
         line_bot_api.reply_message(event.reply_token, template_message)
 
     elif text == 'flex':
@@ -112,15 +112,7 @@ def handle_message(event):
                 layout='vertical',
                 contents=[
                     # title
-                    TextComponent(text="TESR", weight='bold', size='xl'),
-                    # review
-                    BoxComponent(
-                        layout='baseline',
-                        margin='md',
-                        contents=[
-                            TextComponent(text="Thai Embedded System and Robotics", size='sm', color='#999999', margin='md',flex=0)
-                        ]
-                    ),
+                    TextComponent(text="Thai Embedded System and Robotics", weight='bold', size='l', margin='md'),
                     # info
                     BoxComponent(
                         layout='vertical',
@@ -138,7 +130,7 @@ def handle_message(event):
                                         flex=1
                                     ),
                                     TextComponent(
-                                        text='Shinjuku, Tokyo',
+                                        text='Bangkok, Thailand',
                                         wrap=True,
                                         color='#666666',
                                         size='sm',
@@ -157,7 +149,7 @@ def handle_message(event):
                                         flex=1
                                     ),
                                     TextComponent(
-                                        text="10:00 - 23:00",
+                                        text="09:00 - 22:00",
                                         wrap=True,
                                         color='#666666',
                                         size='sm',
@@ -179,7 +171,7 @@ def handle_message(event):
                     ButtonComponent(
                         style='link',
                         height='sm',
-                        action=URIAction(label='CALL', uri='tel:0904656519'),
+                        action=URIAction(label='Call', uri='tel:0904656519'),
                     ),
                     # separator
                     SeparatorComponent(),
@@ -187,12 +179,28 @@ def handle_message(event):
                     ButtonComponent(
                         style='link',
                         height='sm',
-                        action=URIAction(label='WEBSITE', uri="https://example.com")
+                        action=URIAction(label='Website', uri="https://tesracademy.wordpress.com")
+                    ),
+                    # separator
+                    SeparatorComponent(),
+                    # websiteAction
+                    ButtonComponent(
+                        style='link',
+                        height='sm',
+                        action=URIAction(label='Facebook', uri="http://www.facebook.com/ThaiEmbedded")
+                    ),
+                    # separator
+                    SeparatorComponent(),
+                    # websiteAction
+                    ButtonComponent(
+                        style='link',
+                        height='sm',
+                        action=URIAction(label='YouTube', uri="http://www.youtube.com/tesrchannel")
                     )
                 ]
             ),
         )
-        message = FlexSendMessage(alt_text="hello", contents=bubble)
+        message = FlexSendMessage(alt_text="Thank you.", contents=bubble)
         line_bot_api.reply_message(
             event.reply_token,
             message
