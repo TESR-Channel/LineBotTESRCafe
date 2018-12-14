@@ -94,6 +94,9 @@ def handle_message(event):
                                 action=URIAction(uri='http://example.com',
                                                  label='label'))
         ])
+        template_message = TemplateSendMessage(
+            alt_text='ImageCarousel alt text', template=image_carousel_template)
+        line_bot_api.reply_message(event.reply_token, template_message)
 
     elif text == 'flex':
         bubble = BubbleContainer(
