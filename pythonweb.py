@@ -112,7 +112,7 @@ def handle_message(event):
                 layout='vertical',
                 contents=[
                     # title
-                    TextComponent(text="Thai Embedded System and Robotics", weight='bold', size='full', margin='md'),
+                    TextComponent(text="Thai Embedded System and Robotics", weight='bold', size='l', margin='md'),
                     # info
                     BoxComponent(
                         layout='vertical',
