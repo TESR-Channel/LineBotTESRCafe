@@ -193,7 +193,17 @@ def handle_message(event):
                     ButtonComponent(
                         style='link',
                         height='sm',
-                        action=URIAction(label='WEBSITE', uri="https://example.com")
+                        action=URIAction(label='WEBSITE', uri="https://tesracademy.wordpress.com/")
+                    ),
+                    ButtonComponent(
+                        style='link',
+                        height='sm',
+                        action=URIAction(label='FACEBOOK', uri="http://www.facebook.com/ThaiEmbedded")
+                    ),
+                    ButtonComponent(
+                        style='link',
+                        height='sm',
+                        action=URIAction(label='YOUTUBE', uri="http://www.youtube.com/tesrchannel")
                     )
                 ]
             ),
