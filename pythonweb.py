@@ -185,7 +185,7 @@ def handle_message(event):
                     ButtonComponent(
                         style='link',
                         height='sm',
-                        action=URIAction(label='CALL', uri='tel:000000'),
+                        action=URIAction(label='Call', uri='tel:000000'),
                     ),
                     # separator
                     SeparatorComponent(),
@@ -193,17 +193,21 @@ def handle_message(event):
                     ButtonComponent(
                         style='link',
                         height='sm',
-                        action=URIAction(label='WEBSITE', uri="https://tesracademy.wordpress.com/")
+                        action=URIAction(label='Website', uri="https://tesracademy.wordpress.com")
                     ),
+                    # separator
+                    SeparatorComponent(),
                     ButtonComponent(
                         style='link',
                         height='sm',
-                        action=URIAction(label='FACEBOOK', uri="http://www.facebook.com/ThaiEmbedded")
+                        action=URIAction(label='Facebook', uri="http://www.facebook.com/ThaiEmbedded")
                     ),
+                    # separator
+                    SeparatorComponent(),
                     ButtonComponent(
                         style='link',
                         height='sm',
-                        action=URIAction(label='YOUTUBE', uri="http://www.youtube.com/tesrchannel")
+                        action=URIAction(label='Youtube', uri="http://www.youtube.com/tesrchannel")
                     )
                 ]
             ),
