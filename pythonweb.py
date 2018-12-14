@@ -200,13 +200,13 @@ def handle_message(event):
                     ButtonComponent(
                         style='link',
                         height='sm',
-                        action=URIAction(label='Call', uri='tel:000000'),
+                        action=URIAction(label='Call', uri='tel:0904656519'),
                     )
                     
                 ]
             ),
         )
-        message = FlexSendMessage(alt_text="hello", contents=bubble)
+        message = FlexSendMessage(alt_text="Thank you", contents=bubble)
         line_bot_api.reply_message(
             event.reply_token,
             message
