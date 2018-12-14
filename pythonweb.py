@@ -188,14 +188,6 @@ def handle_message(event):
                         style='link',
                         height='sm',
                         action=URIAction(label='Facebook', uri="http://www.facebook.com/ThaiEmbedded")
-                    ),
-                    # separator
-                    SeparatorComponent(),
-                    # websiteAction
-                    ButtonComponent(
-                        style='link',
-                        height='sm',
-                        action=URIAction(label='YouTube', uri="http://www.youtube.com/tesrchannel")
                     )
                 ]
             ),
