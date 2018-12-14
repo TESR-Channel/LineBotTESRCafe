@@ -114,19 +114,19 @@ def handle_message(event):
                     # title
                     TextComponent(text="Thai Embedded System and Robotics", weight='bold', size='xl', margin='md'),
                     # review
-                    BoxComponent(
-                        layout='baseline',
-                        margin='md',
-                        contents=[
-                            IconComponent(size='sm', url='https://example.com/gold_star.png'),
-                            IconComponent(size='sm', url='https://example.com/grey_star.png'),
-                            IconComponent(size='sm', url='https://example.com/gold_star.png'),
-                            IconComponent(size='sm', url='https://example.com/gold_star.png'),
-                            IconComponent(size='sm', url='https://example.com/grey_star.png'),
-                            TextComponent(text='4.0', size='sm', color='#999999', margin='md',
-                                          flex=0)
-                        ]
-                    ),
+##                    BoxComponent(
+##                        layout='baseline',
+##                        margin='md',
+##                        contents=[
+##                            IconComponent(size='sm', url='https://example.com/gold_star.png'),
+##                            IconComponent(size='sm', url='https://example.com/grey_star.png'),
+##                            IconComponent(size='sm', url='https://example.com/gold_star.png'),
+##                            IconComponent(size='sm', url='https://example.com/gold_star.png'),
+##                            IconComponent(size='sm', url='https://example.com/grey_star.png'),
+##                            TextComponent(text='4.0', size='sm', color='#999999', margin='md',
+##                                          flex=0)
+##                        ]
+##                    ),
                     # info
                     BoxComponent(
                         layout='vertical',
@@ -179,8 +179,8 @@ def handle_message(event):
                 layout='vertical',
                 spacing='sm',
                 contents=[
-                    # callAction, separator, websiteAction
-                    SpacerComponent(size='sm'),
+                    # separator
+                    SeparatorComponent(),
                     # callAction
                     ButtonComponent(
                         style='link',
