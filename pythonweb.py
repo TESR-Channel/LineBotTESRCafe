@@ -112,7 +112,21 @@ def handle_message(event):
                 layout='vertical',
                 contents=[
                     # title
-                    TextComponent(text="Thai Embedded System and Robotics", weight='bold', size='l', margin='md'),
+                    TextComponent(text="Thai Embedded System and Robotics", weight='bold', size='xl', margin='md'),
+                    # review
+                    BoxComponent(
+                        layout='baseline',
+                        margin='md',
+                        contents=[
+                            IconComponent(size='sm', url='https://example.com/gold_star.png'),
+                            IconComponent(size='sm', url='https://example.com/grey_star.png'),
+                            IconComponent(size='sm', url='https://example.com/gold_star.png'),
+                            IconComponent(size='sm', url='https://example.com/gold_star.png'),
+                            IconComponent(size='sm', url='https://example.com/grey_star.png'),
+                            TextComponent(text='4.0', size='sm', color='#999999', margin='md',
+                                          flex=0)
+                        ]
+                    ),
                     # info
                     BoxComponent(
                         layout='vertical',
@@ -161,7 +175,7 @@ def handle_message(event):
                     )
                 ],
             ),
-            footer=BoxComponent(
+             footer=BoxComponent(
                 layout='vertical',
                 spacing='sm',
                 contents=[
@@ -171,7 +185,7 @@ def handle_message(event):
                     ButtonComponent(
                         style='link',
                         height='sm',
-                        action=URIAction(label='Call', uri='tel:0904656519'),
+                        action=URIAction(label='CALL', uri='tel:000000'),
                     ),
                     # separator
                     SeparatorComponent(),
@@ -179,20 +193,12 @@ def handle_message(event):
                     ButtonComponent(
                         style='link',
                         height='sm',
-                        action=URIAction(label='Website', uri="https://tesracademy.wordpress.com")
-                    ),
-                    # separator
-                    SeparatorComponent(),
-                    # websiteAction
-                    ButtonComponent(
-                        style='link',
-                        height='sm',
-                        action=URIAction(label='Facebook', uri="http://www.facebook.com/ThaiEmbedded")
+                        action=URIAction(label='WEBSITE', uri="https://example.com")
                     )
                 ]
             ),
         )
-        message = FlexSendMessage(alt_text="Thank you.", contents=bubble)
+        message = FlexSendMessage(alt_text="hello", contents=bubble)
         line_bot_api.reply_message(
             event.reply_token,
             message
