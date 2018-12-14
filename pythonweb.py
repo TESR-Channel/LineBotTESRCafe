@@ -83,14 +83,9 @@ def handle_message(event):
             
     elif text == "menu":
         image_carousel_template = ImageCarouselTemplate(columns=[
-            ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
-                                action=DatetimePickerAction(label='datetime',
-                                                            data='datetime_postback',
-                                                            mode='datetime')),
-            ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
-                                action=DatetimePickerAction(label='date',
-                                                            data='date_postback',
-                                                            mode='date'))
+            ImageCarouselColumn(image_url="https://scontent.fbkk6-1.fna.fbcdn.net/v/t1.0-9/39454660_1001737283342645_6691743344214671360_n.jpg?_nc_cat=100&_nc_ht=scontent.fbkk6-1.fna&oh=8155c7522c7b274d7afcf65d5d07dfc2&oe=5CA6BAA1"),
+            ImageCarouselColumn(image_url="https://scontent.fbkk6-2.fna.fbcdn.net/v/t1.0-9/39442752_1001738930009147_2170020964899749888_n.jpg?_nc_cat=103&_nc_ht=scontent.fbkk6-2.fna&oh=ec390fe97902d919704e68cc36534165&oe=5CAFD3A8"),
+            ImageCarouselColumn(image_url="https://scontent.fbkk6-1.fna.fbcdn.net/v/t1.0-9/39221449_1001737313342642_6907313284718788608_n.jpg?_nc_cat=108&_nc_ht=scontent.fbkk6-1.fna&oh=63d6884a0af21043195873c19de8a1fc&oe=5CA5B7BB")
         ])
         template_message = TemplateSendMessage(
             alt_text='ImageCarousel alt text', template=image_carousel_template)
@@ -100,29 +95,23 @@ def handle_message(event):
         bubble = BubbleContainer(
             direction='ltr',
             hero=ImageComponent(
-                url='https://example.com/cafe.jpg',
+                url="https://scontent.fbkk6-1.fna.fbcdn.net/v/t1.0-9/41213384_1018615684988138_7694866487005151232_n.png?_nc_cat=105&_nc_ht=scontent.fbkk6-1.fna&oh=ad538dcfcb4d158a95eb64f88cfd6f40&oe=5CB200B2",
                 size='full',
                 aspect_ratio='20:13',
                 aspect_mode='cover',
-                action=URIAction(uri='http://example.com', label='label')
+                action=URIAction(uri="https://tesracademy.wordpress.com/", label='label')
             ),
             body=BoxComponent(
                 layout='vertical',
                 contents=[
                     # title
-                    TextComponent(text='Brown Cafe', weight='bold', size='xl'),
+                    TextComponent(text='TESR', weight='bold', size='xl'),
                     # review
                     BoxComponent(
                         layout='baseline',
                         margin='md',
                         contents=[
-                            IconComponent(size='sm', url='https://example.com/gold_star.png'),
-                            IconComponent(size='sm', url='https://example.com/grey_star.png'),
-                            IconComponent(size='sm', url='https://example.com/gold_star.png'),
-                            IconComponent(size='sm', url='https://example.com/gold_star.png'),
-                            IconComponent(size='sm', url='https://example.com/grey_star.png'),
-                            TextComponent(text='4.0', size='sm', color='#999999', margin='md',
-                                          flex=0)
+                            TextComponent(text="Thai Embedded System and Robotics", size='sm', color='#999999', margin='md',flex=0)
                         ]
                     ),
                     # info
@@ -183,7 +172,7 @@ def handle_message(event):
                     ButtonComponent(
                         style='link',
                         height='sm',
-                        action=URIAction(label='CALL', uri='tel:000000'),
+                        action=URIAction(label='CALL', uri='tel:0904656519'),
                     ),
                     # separator
                     SeparatorComponent(),
@@ -196,11 +185,11 @@ def handle_message(event):
                 ]
             ),
         )
-        message = FlexSendMessage(alt_text="hello", contents=bubble)
-        line_bot_api.reply_message(
-            event.reply_token,
-            message
-        )
+##        message = FlexSendMessage(alt_text="hello", contents=bubble)
+##        line_bot_api.reply_message(
+##            event.reply_token,
+##            message
+##        )
         
     elif text == "contact":
         if isinstance(event.source, SourceUser):
