@@ -82,7 +82,7 @@ def handle_message(event):
                 TextSendMessage(text="Bot can't use profile API without user ID"))
             
     elif text == "menu":
-        Menu_url = "http://example.com" # Menu Web Url
+        Menu_url = "http://149.28.153.220:1880/ui/#/0" # Menu Web Url
         image_carousel_template = ImageCarouselTemplate(columns=[
             ImageCarouselColumn(image_url='https://scontent.fbkk6-1.fna.fbcdn.net/v/t1.0-9/39454660_1001737283342645_6691743344214671360_n.jpg?_nc_cat=100&_nc_ht=scontent.fbkk6-1.fna&oh=8155c7522c7b274d7afcf65d5d07dfc2&oe=5CA6BAA1',
                                 action=URIAction(uri=Menu_url,
