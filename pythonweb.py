@@ -65,7 +65,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     #global url , KEY , SECRET
-    r = requests.put(url, data = {'':profile.display_name, '':profile.user_id} , auth=(str(KEY),str(SECRET)))
+    r = requests.put(url, data = {'':str(profile.display_name)} , auth=(str(KEY),str(SECRET)))
     text = (str(event.message.text)).lower()
     if text == "profile":
         if isinstance(event.source, SourceUser):
