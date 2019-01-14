@@ -66,11 +66,11 @@ def callback():
 def handle_message(event):
     #global url , KEY , SECRET
     text = (str(event.message.text)).lower()
+    profile = line_bot_api.get_profile(event.source.user_id)
+    msg = {"Display":profile.display_name,"User ID":profile.user_id}
+    r = requests.put(NETPIEurl, data = msg , auth=(str(KEY),str(SECRET)))
     if text == "profile":
         if isinstance(event.source, SourceUser):
-            profile = line_bot_api.get_profile(event.source.user_id)
-            msg = {"Display":profile.display_name,"User ID":profile.user_id}
-            r = requests.put(NETPIEurl, data = msg , auth=(str(KEY),str(SECRET)))
             line_bot_api.reply_message(
                 event.reply_token, [
                     TextSendMessage(text='Display name: ' + profile.display_name),
