@@ -65,6 +65,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     #global url , KEY , SECRET
+    r = requests.put(url, data = {'':profile.display_name, '':profile.user_id} , auth=(str(KEY),str(SECRET)))
     text = (str(event.message.text)).lower()
     if text == "profile":
         if isinstance(event.source, SourceUser):
@@ -249,7 +250,7 @@ def handle_message(event):
         else:
             line_bot_api.reply_message(
                 event.reply_token,
-                TextSendMessage(text="Bot can't use profile API without user ID"))
+                TextSendMessage(text="ขอโทษด้วยค่ะ ฉันไม่เข้าใจค่ะ I'm sorry. I don't understand."))
 
     #elif "temp?" in text:
         #REST API NETPIE read sensor value
@@ -290,7 +291,7 @@ def handle_sticker_message(event):
 
 @handler.add(BeaconEvent)
 def handle_beacon(event):
-    Menu_url = "http://example.com" # Menu Web Url
+    Menu_url = "http://149.28.153.220:1880/ui/#/0" # Menu Web Url
     image_carousel_template = ImageCarouselTemplate(columns=[
         ImageCarouselColumn(image_url='https://scontent.fbkk6-1.fna.fbcdn.net/v/t1.0-9/39454660_1001737283342645_6691743344214671360_n.jpg?_nc_cat=100&_nc_ht=scontent.fbkk6-1.fna&oh=8155c7522c7b274d7afcf65d5d07dfc2&oe=5CA6BAA1',
                             action=URIAction(uri=Menu_url,
