@@ -36,7 +36,7 @@ KEY = "bjuWQftBs1hMHSw"
 SECRET = "EUUdgsgDClUdqdzIDGnwjZ752"
 Topic = "/Userprofile"
 
-url = 'http://api.netpie.io/topic/' + str(APPID) + str(Topic) + "?retain"
+NETPIEurl = 'http://api.netpie.io/topic/' + str(APPID) + str(Topic) + "?retain"
 #curl -X PUT "https://api.netpie.io/topic/LineBotRpi/LED_Control" -d "ON" -u Jk0ej35pLC7TVr1:edWzwTUkzizhlyRamWWq6nF9I 
 
 urlRESTAPI = 'https://api.netpie.io/topic/' + str(APPID) + str(Topic) + '?auth=' + str(KEY) + ':' + str(SECRET)
@@ -70,7 +70,7 @@ def handle_message(event):
         if isinstance(event.source, SourceUser):
             profile = line_bot_api.get_profile(event.source.user_id)
             msg = {"UserID":"0904656519","Name":"TESR"}
-            r = requests.put(url, data = msg , auth=(str(KEY),str(SECRET)))
+            r = requests.put(NETPIEurl, data = msg , auth=(str(KEY),str(SECRET)))
             line_bot_api.reply_message(
                 event.reply_token, [
                     TextSendMessage(text='Display name: ' + profile.display_name),
