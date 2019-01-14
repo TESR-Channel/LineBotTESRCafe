@@ -269,6 +269,19 @@ def handle_message(event):
                 event.reply_token,
                 TextSendMessage(text="ขอโทษด้วยค่ะ ฉันไม่เข้าใจค่ะ I'm sorry. I don't understand."))
 
+    elif text == "order":
+        if isinstance(event.source, SourceUser):
+            profile = line_bot_api.get_profile(event.source.user_id)
+            #r = requests.put(url, data = {'':str(profile.display_name)} , auth=(str(KEY),str(SECRET)))
+            line_bot_api.reply_message(
+                event.reply_token, [
+                    TextSendMessage(text="http://149.28.153.220:1880/ui/#/0")
+                ]
+            )
+        else:
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text="ขอโทษด้วยค่ะ ฉันไม่เข้าใจค่ะ I'm sorry. I don't understand."))
     #elif "temp?" in text:
         #REST API NETPIE read sensor value
         #r = requests.put(url, data = {'':'temp?'} , auth=(str(KEY),str(SECRET)))
