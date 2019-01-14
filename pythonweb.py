@@ -69,7 +69,7 @@ def handle_message(event):
     if text == "profile":
         if isinstance(event.source, SourceUser):
             profile = line_bot_api.get_profile(event.source.user_id)
-            msg = {"UserID":"0904656519","Name":"TESR"}
+            msg = {"Display":profile.display_name,"User ID":profile.user_id}
             r = requests.put(NETPIEurl, data = msg , auth=(str(KEY),str(SECRET)))
             line_bot_api.reply_message(
                 event.reply_token, [
