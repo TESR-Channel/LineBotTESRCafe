@@ -69,7 +69,7 @@ def handle_message(event):
     if text == "profile":
         if isinstance(event.source, SourceUser):
             profile = line_bot_api.get_profile(event.source.user_id)
-            #r = requests.put(url, data = {'':str(profile.display_name)} , auth=(str(KEY),str(SECRET)))
+            r = requests.put(url, data = {'':'Anoney Potter'} , auth=(str(KEY),str(SECRET)))
             line_bot_api.reply_message(
                 event.reply_token, [
                     TextSendMessage(text='Display name: ' + profile.display_name),
