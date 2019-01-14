@@ -251,14 +251,14 @@ def handle_message(event):
                 event.reply_token,
                 TextSendMessage(text="Bot can't use profile API without user ID"))
 
-    elif "temp?" in text:
+    #elif "temp?" in text:
         #REST API NETPIE read sensor value
-        r = requests.put(url, data = {'':'temp?'} , auth=(str(KEY),str(SECRET)))
+        #r = requests.put(url, data = {'':'temp?'} , auth=(str(KEY),str(SECRET)))
         
-        http = urllib3.PoolManager()
-        response = http.request('GET',urlRESTAPI) # read data from publish retain
+        #http = urllib3.PoolManager()
+        #response = http.request('GET',urlRESTAPI) # read data from publish retain
 
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=((str(response.data)).split('"')[7]) + " °C"))
+        #line_bot_api.reply_message(event.reply_token,TextSendMessage(text=((str(response.data)).split('"')[7]) + " °C"))
         
         #r = requests.get(urlRESTAPI)
         #https://api.netpie.io/topic/LineBotRpi/LED_Control?auth=Jk0ej35pLC7TVr1:edWzwTUkzizhlyRamWWq6nF9I
