@@ -34,7 +34,7 @@ handler = WebhookHandler('181d1c80ab13effe16793f4e266e1426')
 APPID="LineBotRpi"
 KEY = "bjuWQftBs1hMHSw"
 SECRET = "EUUdgsgDClUdqdzIDGnwjZ752"
-Topic = "/LED_Control"
+Topic = "/Userprofile"
 
 url = 'https://api.netpie.io/topic/' + str(APPID) + str(Topic)
 #curl -X PUT "https://api.netpie.io/topic/LineBotRpi/LED_Control" -d "ON" -u Jk0ej35pLC7TVr1:edWzwTUkzizhlyRamWWq6nF9I 
@@ -69,7 +69,7 @@ def handle_message(event):
     if text == "profile":
         if isinstance(event.source, SourceUser):
             profile = line_bot_api.get_profile(event.source.user_id)
-            r = requests.put(url, data = {'':str(profile.display_name)} , auth=(str(KEY),str(SECRET)))
+            #r = requests.put(url, data = {'':str(profile.display_name)} , auth=(str(KEY),str(SECRET)))
             line_bot_api.reply_message(
                 event.reply_token, [
                     TextSendMessage(text='Display name: ' + profile.display_name),
@@ -80,9 +80,26 @@ def handle_message(event):
         else:
             line_bot_api.reply_message(
                 event.reply_token,
-                TextSendMessage(text="Bot can't use profile API without user ID"))
+                TextSendMessage(text="ขอโทษด้วยค่ะ ฉันไม่เข้าใจค่ะ I'm sorry. I don't understand."))
             
     elif text == "menu":
+        Menu_url = "http://149.28.153.220:1880/ui/#/0" # Menu Web Url
+        image_carousel_template = ImageCarouselTemplate(columns=[
+            ImageCarouselColumn(image_url='https://scontent.fbkk6-1.fna.fbcdn.net/v/t1.0-9/39454660_1001737283342645_6691743344214671360_n.jpg?_nc_cat=100&_nc_ht=scontent.fbkk6-1.fna&oh=8155c7522c7b274d7afcf65d5d07dfc2&oe=5CA6BAA1',
+                                action=URIAction(uri=Menu_url,
+                                                 label='500 Baht')),
+            ImageCarouselColumn(image_url='https://scontent.fbkk6-2.fna.fbcdn.net/v/t1.0-9/39442752_1001738930009147_2170020964899749888_n.jpg?_nc_cat=103&_nc_ht=scontent.fbkk6-2.fna&oh=ec390fe97902d919704e68cc36534165&oe=5CAFD3A8',
+                                action=URIAction(uri=Menu_url,
+                                                 label='80 Baht')),
+            ImageCarouselColumn(image_url='https://scontent.fbkk6-1.fna.fbcdn.net/v/t1.0-9/39221449_1001737313342642_6907313284718788608_n.jpg?_nc_cat=108&_nc_ht=scontent.fbkk6-1.fna&oh=63d6884a0af21043195873c19de8a1fc&oe=5CA5B7BB',
+                                action=URIAction(uri=Menu_url,
+                                                 label='200 Baht'))
+        ])
+        template_message = TemplateSendMessage(
+            alt_text="Thank you.", template=image_carousel_template)
+        line_bot_api.reply_message(event.reply_token, template_message)
+        
+    elif text == "hi" or text == "hello" or text == "hey":
         Menu_url = "http://149.28.153.220:1880/ui/#/0" # Menu Web Url
         image_carousel_template = ImageCarouselTemplate(columns=[
             ImageCarouselColumn(image_url='https://scontent.fbkk6-1.fna.fbcdn.net/v/t1.0-9/39454660_1001737283342645_6691743344214671360_n.jpg?_nc_cat=100&_nc_ht=scontent.fbkk6-1.fna&oh=8155c7522c7b274d7afcf65d5d07dfc2&oe=5CA6BAA1',
@@ -266,7 +283,7 @@ def handle_message(event):
         
         
     else:
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="ขอโทษด้วยค่ะ ฉันไม่เข้าใจค่ะ I'm sorry. I don't understand."))
 
 @handler.add(MessageEvent, message=LocationMessage)
 def handle_location_message(event):
